@@ -9,11 +9,11 @@ const questionSchema = new Schema(
   {
     id: { type: Number, unique: true },
     product_id: Number,
-    body: String,
-    date_written: Date,
+    question_body: String,
+    question_date: Date,
     asker_name: String,
     asker_email: String,
-    helpful: Number,
+    question_helpfulness: Number,
     reported: Number
   },
   { collection: "questions" }
@@ -21,17 +21,17 @@ const questionSchema = new Schema(
 
 const answerSchema = new Schema(
   {
-    id: { type: Number, unique: true },
+    answer_id: Number,
     question_id: Number,
     body: String,
-    date_written: Date,
-    answer_name: String,
+    date: Date,
+    answerer_name: String,
     answer_email: String,
-    helpful: Number,
+    helpfulness: Number,
     reported: Number,
-    url: Array
+    photos: Array
   },
-  { collection: "combined_answers" }
+  { collection: "combined_answers2" }
 );
 
 const Question = mongoose.model("Question", questionSchema);

@@ -1,13 +1,27 @@
-const { getQuestionData } = require("../../db/model/questionModel.js");
+const {
+  getQuestionData,
+  postQuestionData
+} = require("../../db/model/questionModel.js");
 
 const getQuestion = (req, res) => {
-  getQuestionData(req.params.product_id).exec((err, questions) => {
+  getQuestionData(req.params.product_id).exec((err, data) => {
     if (err) {
       console.log(err);
     }
-    console.log(questions);
-    res.send(JSON.stringify(quesitons));
+    let questions = { product_id: req.params.product_id, results: [...data] };
+    res.send(JSON.stringify(questions));
   });
 };
 
-module.exports = { getQuestion };
+const postQuestion = (req, res) => {
+  console.log(req.params.product_id, req.body);
+  res.sendStatus(201);
+  postQuestionData(req.params.product_id, req.body).exec((err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    res.sendStatus(201);
+  });
+};
+
+module.exports = { getQuestion, postQuestion };

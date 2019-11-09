@@ -1,12 +1,13 @@
 const router = require("express").Router();
-const { getQuestion } = require("../controller/questionController.js");
+const {
+  getQuestion,
+  postQuestion
+} = require("../controller/questionController.js");
 
 //routes for questions
 router.get("/:product_id", getQuestion);
 
-router.post("/:product_id", (req, res) => {
-  res.send("trying to post a questions");
-});
+router.post("/:product_id", postQuestion);
 
 router.put("/question/:question_id/helpful", (req, res) => {
   res.send("mark question as helpful");
