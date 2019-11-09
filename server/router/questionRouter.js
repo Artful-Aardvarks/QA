@@ -1,9 +1,8 @@
 const router = require("express").Router();
+const { getQuestion } = require("../controller/questionController.js");
 
 //routes for questions
-router.get("/:product_id", (req, res) => {
-  res.send("geting all questions");
-});
+router.get("/:product_id", getQuestion);
 
 router.post("/:product_id", (req, res) => {
   res.send("trying to post a questions");
