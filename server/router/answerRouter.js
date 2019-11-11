@@ -1,17 +1,16 @@
 const router = require("express").Router();
-const { getAnswer } = require("../controller/answerController.js");
+const {
+  getAnswer,
+  postAnswer,
+  markAnswerHelpful,
+  reportAnswer
+} = require("../controller/answerController.js");
 //routes for answers
 router.get("/:question_id/answers", getAnswer);
 
-router.post("/:question_id/answers", (req, res) => {
-  res.send("trying to post a answer");
-});
+router.post("/:question_id/answers", postAnswer);
 
-router.put("/answer/:answer_id/helpful", (req, res) => {
-  res.send("mark answer as helpful");
-});
-router.put("/answer/:answer_id/report", (req, res) => {
-  res.send("report an answers");
-});
+router.put("/answer/:answer_id/helpful", markAnswerHelpful);
+router.put("/answer/:answer_id/report", reportAnswer);
 
 module.exports = router;

@@ -1,9 +1,11 @@
 const mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-mongoose.connect("mongodb://localhost/QA").then(() => {
-  console.log("connected to mongod");
-});
+mongoose
+  .connect("mongodb://localhost/QA", { useFindAndModify: false })
+  .then(() => {
+    console.log("connected to mongod");
+  });
 
 const questionSchema = new Schema(
   {
@@ -21,12 +23,12 @@ const questionSchema = new Schema(
 
 const answerSchema = new Schema(
   {
-    answer_id: Number,
+    answer_id: { type: Number, unique: true },
     question_id: Number,
     body: String,
     date: Date,
     answerer_name: String,
-    answer_email: String,
+    answerer_email: String,
     helpfulness: Number,
     reported: Number,
     photos: Array
