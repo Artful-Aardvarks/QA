@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 mongoose
-  .connect("mongodb://localhost/QA", { useFindAndModify: false })
+  .connect("mongodb://172.31.81.116/QA", { useFindAndModify: false })
   .then(() => {
     console.log("connected to mongod");
   });

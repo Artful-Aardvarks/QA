@@ -13,6 +13,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //express routes
 app.use("/qa", questionRouter);
 app.use("/qa", answerRouter);
+app.get("/loaderio-80a36018cb38dacd07d703b0540ff42b/", (req, res) => {
+  res.send("loaderio-80a36018cb38dacd07d703b0540ff42b");
+});
 
 //server connection
 let port = 3000;
